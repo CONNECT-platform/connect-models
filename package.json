@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loreanvictor/connect-platform-biolerplate.git"
+  },
+  "author": "Eugene Ghanizadeh Khoub <ghanizadeh.eugene@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loreanvictor/connect-platform-biolerplate/issues"
+  },
+  "homepage": "https://github.com/loreanvictor/connect-platform-biolerplate#readme",
+  "dependencies": {
+    "connect-platform": "^0.1.3"
+  }
+}
