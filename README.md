@@ -1,4 +1,4 @@
-# connect-platform-biolerplate
+# connect-platform-boilerplate
 
 this is a super easy way to start a [CONNECT platform](https://loreanvictor.github.io/connect-platform/) project.
 just follow these easy steps:
