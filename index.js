@@ -17,6 +17,11 @@ platform
     }
   });
 
+try {
+  let panelconf = require('./panel-generated/platform-config');
+  platform.configure(panelconf);
+} catch(err) {}
+
 if (process.env.CONNECT_PANEL_SECRET)
   platform.configure({
     panel: {
