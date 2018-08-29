@@ -29,6 +29,11 @@ if (process.env.CONNECT_PANEL_SECRET)
     }
   });
 
+if (process.env.CONNECT_PROJECT_NAME)
+  platform.configure({
+    name: process.env.CONNECT_PROJECT_NAME
+  });
+
 platform.start()
   .then(server => {
     console.log(`running on http://${server.address().address}` +
