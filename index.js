@@ -34,6 +34,11 @@ if (process.env.CONNECT_PROJECT_NAME)
     name: process.env.CONNECT_PROJECT_NAME
   });
 
+if (process.env.CONNECT_INSTANCE_AUTO_SLEEP)
+  platform.configure({
+    instance_auto_sleep: process.env.CONNECT_INSTANCE_AUTO_SLEEP
+  });
+
 platform.start()
   .then(server => {
     console.log(`running on http://${server.address().address}` +
