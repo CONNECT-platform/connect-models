@@ -22,6 +22,17 @@ try {
   platform.configure(panelconf);
 } catch(err) {}
 
+try {
+  require('./panel-generated/platform-config.script');
+} catch(err) {}
+
+try {
+  if (process.env.CONNECT_PRODUCTION_MODE) {
+    let prodconf = require('./panel-generated/platform-config.prod');
+    platform.configure(prodconf);
+  }
+} catch(err) {}
+
 if (process.env.CONNECT_PANEL_SECRET)
   platform.configure({
     panel: {
