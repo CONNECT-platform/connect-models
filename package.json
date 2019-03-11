@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/loreanvictor/connect-platform-biolerplate#readme",
   "dependencies": {
-    "connect-platform": "^0.2.12"
+    "connect-platform": "^0.2.13"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
