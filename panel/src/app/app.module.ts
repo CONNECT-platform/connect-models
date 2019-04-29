@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon'
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ModelComponent } from './model/model.component';
@@ -25,6 +26,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     BrowserModule,
     DragDropModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [
     CentralService

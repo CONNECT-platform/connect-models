@@ -1,6 +1,6 @@
-import { Component, ViewChild, HostListener } from '@angular/core';
+import { Component, ViewChild, HostListener, OnInit } from '@angular/core';
 
-import { ModelSchema, Model, Join, Field } from './types';
+import { ModelSchema, Model, Join, Field, FilterType, OrderType } from './types';
 import { CentralService } from './central.service';
 
 import { OverlayComponent } from './overlay/overlay.component';
@@ -11,7 +11,7 @@ import { OverlayComponent } from './overlay/overlay.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
 
   selectModel: Model;
@@ -20,12 +20,27 @@ export class AppComponent {
   joins: Join[] = [];
   freeJoin: Join = undefined;
 
+  public selectedField: Field = undefined;
+  public filterType: FilterType = undefined;
+  public filterRef: string = undefined;
+  public orderType: OrderType = undefined;
+
   @ViewChild('addOverlay') addOverlay: OverlayComponent;
   @ViewChild('aliasOverlay') aliasOverlay: OverlayComponent;
+  @ViewChild('fieldOverlay') fieldOverlay: OverlayComponent;
 
   constructor(public central: CentralService) {}
 
   get models(): Model[] { return Object.values(this._models); }
+
+  ngOnInit() {
+    this.fieldOverlay.closed.subscribe(() => {
+      this.filterType = undefined;
+      this.filterRef = undefined;
+      this.orderType = undefined;
+      this.selectedField = undefined;
+    });
+  }
 
   addModel(schema: ModelSchema) {
     let newModel = new Model(schema);
@@ -75,6 +90,42 @@ export class AppComponent {
         this.freeJoin.from.component.joined = false;
       }
       this.freeJoin = undefined;
+    }
+  }
+
+  selectField(field: Field) {
+    this.selectedField = field;
+    if (this.selectedField.filter) {
+      this.filterType = this.selectedField.filter.type;
+      this.filterRef = this.selectedField.filter.ref;
+    }
+
+    if (this.selectedField.order) {
+      this.orderType = this.selectedField.order.type;
+    }
+    this.fieldOverlay.activate();
+  }
+
+  applyFilter() {
+    if (this.selectedField && this.filterType && this.filterRef) {
+      this.selectedField.filter = {
+        type: this.filterType,
+        ref: this.filterRef,
+        field: this.selectedField,
+      };
+
+      this.fieldOverlay.close();
+    }
+  }
+
+  applyOrder() {
+    if (this.selectedField && this.orderType) {
+      this.selectedField.order = {
+        type: this.orderType,
+        field: this.selectedField,
+      };
+
+      this.fieldOverlay.close();
     }
   }
 }

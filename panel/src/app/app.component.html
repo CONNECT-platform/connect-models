@@ -5,13 +5,13 @@
     (join)="addJoin($event)"
     (click)="closeJoin(model)"
     (pick)="closeJoin(model)"
+    (fieldSelect)="selectField($event)"
     ></model>
 
   <join *ngFor="let join of joins" [join]="join"></join>
 
   <div class="buttons">
     <button (click)="addOverlay.activate()">ADD</button>
-    <button>RUN</button>
   </div>
 
   <overlay #addOverlay>
@@ -29,5 +29,35 @@
     <input type="text" #aliasInput />
     <br>
     <button (click)="addFreeModel(aliasInput.value)">Done</button>
+  </overlay>
+
+  <overlay #fieldOverlay>
+    <p>Filter results by {{selectedField?.name}} of {{selectedField?.model?.alias || selectedField?.model?.name}}:</p>
+    <br>
+    <div class="filter-type" (click)="filterType='before'" [ngClass]="{'active': filterType == 'before'}">&lt;</div>
+    <div class="filter-type" (click)="filterType='beforeeq'" [ngClass]="{'active': filterType == 'beforeeq'}">&lt;=</div>
+    <div class="filter-type" (click)="filterType='equals'" [ngClass]="{'active': filterType == 'equals'}">==</div>
+    <div class="filter-type" (click)="filterType='neq'" [ngClass]="{'active': filterType == 'neq'}">!=</div>
+    <div class="filter-type" (click)="filterType='aftereq'" [ngClass]="{'active': filterType == 'aftereq'}">&gt;=</div>
+    <div class="filter-type" (click)="filterType='after'" [ngClass]="{'active': filterType == 'after'}">&gt;</div>
+    <br>
+    <input type="text" [(ngModel)]="filterRef" placeholder="reference value ..."/>
+    <div class="button-holder">
+      <button (click)="applyFilter()">APPLY FILTER</button>
+    </div>
+    <br><br><br>
+    <hr>
+    <br><br><br>
+    <p>Order results based on {{selectedField?.name}} of {{selectedField?.model?.alias || selectedField?.model?.name}}:</p>
+    <br>
+    <div class="order-type" (click)="orderType='ascending'" [ngClass]="{'active': orderType == 'ascending'}">
+      <mat-icon>vertical_align_bottom</mat-icon>
+    </div>
+    <div class="order-type" (click)="orderType='descending'" [ngClass]="{'active': orderType == 'descending'}">
+      <mat-icon>vertical_align_top</mat-icon>
+    </div>
+    <div class="button-holder">
+      <button (click)="applyOrder()">APPLY ORDER</button>
+    </div>
   </overlay>
 </div>

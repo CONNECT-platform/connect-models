@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 
-import { Field } from '../types';
+import { Field, FilterType, OrderType } from '../types';
 
 @Component({
   selector: 'field',
@@ -11,6 +11,7 @@ export class FieldComponent implements OnInit {
 
   @Input() public field: Field;
   @Output() join: EventEmitter<void> = new EventEmitter<void>();
+  @Output() select: EventEmitter<void> = new EventEmitter<void>();
 
   public joined: boolean = false;
 

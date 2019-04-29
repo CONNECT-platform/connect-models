@@ -11,6 +11,8 @@ export interface ModelSchema {
 
 export class Field {
   public component?: any;
+  public filter?: any;
+  public order?: any;
 
   constructor(public schema: FieldSchema, public model: Model) {}
 
@@ -44,4 +46,19 @@ export interface Join {
   from: Field;
   to: Model;
   component?: any;
+}
+
+export type FilterType = 'equals'|'before'|'after'|'beforeeq'|'aftereq'|'neq';
+
+export interface Filter {
+  field: Field;
+  type: FilterType;
+  ref: string;
+}
+
+export type OrderType = 'ascending' | 'descending';
+
+export interface Order {
+  field: Field;
+  direction: OrderType;
 }

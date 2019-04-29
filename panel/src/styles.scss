@@ -5,6 +5,12 @@ body, * {
   font-family: Futura, 'Nunito', sans-serif;
 }
 
+.button-holder {
+  text-align: right;
+  width: 55vw;
+  margin: 0 auto;
+}
+
 button {
   width: 128px;
   height: 32px;
@@ -35,4 +41,8 @@ input {
   outline: none;
   padding: 0 8px;
   margin: 0 auto;
+}
+
+hr {
+  border-color: #424242;
 }

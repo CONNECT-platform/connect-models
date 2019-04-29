@@ -14,6 +14,7 @@ export class ModelComponent implements OnInit {
   @Input() public model: Model;
   @Output() public join: EventEmitter<Field> = new EventEmitter<Field>();
   @Output() public pick: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public fieldSelect: EventEmitter<Field> = new EventEmitter<Field>();
 
   constructor() {}
 

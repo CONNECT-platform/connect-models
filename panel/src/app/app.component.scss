@@ -32,4 +32,27 @@
       background: #212121;
     }
   }
+
+  .filter-type, .order-type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid white;
+    margin: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+
+    &:hover {
+      background: rgba(255, 255, 255, .25);
+    }
+
+    &.active {
+      border-color: #F5A623;
+      background: #F5A623;
+    }
+  }
 }
