@@ -1,0 +1,6 @@
+<div class="overlay" [ngClass]="{'active': active}">
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+  <mat-icon (click)="close()">close</mat-icon>
+</div>

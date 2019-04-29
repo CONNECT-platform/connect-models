@@ -1,0 +1,18 @@
+<div class="container">
+  <model *ngFor="let model of models" [model]="model"></model>
+  <join *ngFor="let join of joins" [join]="join"></join>
+
+  <div class="buttons">
+    <button (click)="addOverlay.activate()">ADD</button>
+    <button>RUN</button>
+  </div>
+
+  <overlay #addOverlay>
+    <p>Select a model to add to your query.</p>
+    <br><br>
+    <div class="model-select">User</div>
+    <div class="model-select">Subscription</div>
+    <div class="model-select">Journal</div>
+    <div class="model-select">Article</div>
+  </overlay>
+</div>

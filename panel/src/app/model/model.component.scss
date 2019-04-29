@@ -1,0 +1,21 @@
+.box {
+  width: 200px;
+  height: 256px;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: move;
+  background: linear-gradient(#515151, #424242);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+  transition: box-shadow .15s;
+
+  &:active {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .25);
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #B8E986;
+    margin-bottom: 12px;
+  }
+}

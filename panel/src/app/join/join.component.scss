@@ -1,0 +1,15 @@
+.holder {
+  position: fixed;
+  width: 100px;
+  height: 2px;
+  border-top: 2px solid #F5A623;
+  transform-origin: center left;
+
+  img {
+    position: absolute;
+    right: -2px;
+    top: -13px;
+    transform: scale(0.35);
+    transform-origin: center right;
+  }
+}

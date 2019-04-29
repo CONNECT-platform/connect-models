@@ -1,0 +1,35 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #212121;
+  background-image: url('/assets/bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100vmin;
+
+  .buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .model-select {
+    width: 32vw;
+    height: 200px;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background .15s;
+
+    &:hover {
+      background: #212121;
+    }
+  }
+}

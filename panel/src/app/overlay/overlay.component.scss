@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .65);
+  opacity: 0;
+  z-index: -100000;
+  transition: opacity .15s;
+
+  &.active {
+    z-index: 100000;
+    opacity: 1;
+  }
+
+  .content {
+    width: 70vw;
+    color: white;
+  }
+
+  mat-icon {
+    color: white;
+    transform: scale(2);
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .15s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
