@@ -13,6 +13,7 @@ export class ModelComponent implements OnInit {
   @Input() select: boolean = false;
   @Input() public model: Model;
   @Output() public join: EventEmitter<Field> = new EventEmitter<Field>();
+  @Output() public pick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 

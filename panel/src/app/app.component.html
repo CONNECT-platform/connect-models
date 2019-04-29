@@ -4,6 +4,7 @@
     [select]="model == selectModel"
     (join)="addJoin($event)"
     (click)="closeJoin(model)"
+    (pick)="closeJoin(model)"
     ></model>
 
   <join *ngFor="let join of joins" [join]="join"></join>

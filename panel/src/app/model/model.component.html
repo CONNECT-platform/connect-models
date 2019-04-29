@@ -1,4 +1,4 @@
-<div #box class="box" cdkDrag [ngClass]="{'select': select}">
+<div #box class="box" cdkDrag [ngClass]="{'select': select}" (click)="pick.emit()">
   <h1>{{ model.name }}</h1>
   <h3 *ngIf="model.alias">{{model.alias}}</h3>
   <field *ngFor="let field of fields" [field]="field" (join)="join.emit(field)"></field>
