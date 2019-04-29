@@ -11,7 +11,8 @@
   <join *ngFor="let join of joins" [join]="join"></join>
 
   <div class="buttons">
-    <button (click)="addOverlay.activate()">ADD</button>
+    <button (click)="addOverlay.activate()">+</button>
+    <button (click)="addOverlay.activate()" class="play"><mat-icon>play_arrow</mat-icon></button>
   </div>
 
   <overlay #addOverlay>

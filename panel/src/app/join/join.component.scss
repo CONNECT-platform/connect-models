@@ -4,6 +4,12 @@
   height: 2px;
   border-top: 2px solid #F5A623;
   transform-origin: center left;
+  opacity: .5;
+  transition: opacity .15s;
+
+  &:hover {
+    opacity: 1;
+  }
 
   img {
     position: absolute;

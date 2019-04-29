@@ -1,6 +1,11 @@
 <div class="holder">
   <div class="info">
-    <div><span (click)="select.emit()">{{field.name}}</span></div>
+    <div>
+      <span (click)="select.emit()">{{field.name}}</span>
+      <span class="filter-details" *ngIf="this.field.filter" (click)="select.emit()">
+        {{filterTypeOp}} {{field.filter.ref}}
+      </span>
+    </div>
     <div *ngIf="field.type" class="type"><span (click)="select.emit()">{{field.type}}</span></div>
   </div>
   <mat-icon *ngIf="field.filter">filter_list</mat-icon>

@@ -25,4 +25,15 @@ export class FieldComponent implements OnInit {
   get native() {
     return this.elref.nativeElement;
   }
+
+  get filterTypeOp(): string {
+    if (this.field.filter) {
+      if (this.field.filter.type == 'equals') return '==';
+      if (this.field.filter.type == 'neq') return '!=';
+      if (this.field.filter.type == 'after') return '>';
+      if (this.field.filter.type == 'aftereq') return '>=';
+      if (this.field.filter.type == 'before') return '<';
+      if (this.field.filter.type == 'beforeeq') return '<=';
+    }
+  }
 }
