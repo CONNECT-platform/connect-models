@@ -22,24 +22,35 @@ export class JoinComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.updatePos();
+    this.updateFromPos();
+    this.updateToPos();
+    this.updateTransform();
 
     if (this.join && this.join.from.component) {
       this.join.from.component.joined = true;
     }
+
+    if (this.join) {
+      this.join.component = this;
+    }
   }
 
-  updatePos() {
-    if (this.join && this.join.from.component && this.join.to.component) {
+  updateFromPos() {
+    if (this.join && this.join.from.component) {
       let brect = document.body.getBoundingClientRect();
-      let erect1 = this.join.from.component.native.getBoundingClientRect();
-      this.fromPos.left  = erect1.left - brect.left + 192;
-      this.fromPos.top =  erect1.top - brect.top + 20;
+      let erect = this.join.from.component.native.getBoundingClientRect();
+      this.fromPos.left  = erect.left - brect.left + 192;
+      this.fromPos.top =  erect.top - brect.top + 20;
+    }
+  }
 
-      let erect2 = this.join.to.component.native.getBoundingClientRect();
+  updateToPos() {
+    if (this.join.to && this.join.to.component) {
+      let brect = document.body.getBoundingClientRect();
+      let erect = this.join.to.component.native.getBoundingClientRect();
       let toPos0 = <Pos> {
-        left: erect2.left - brect.left,
-        top: erect2.top - brect.top,
+        left: erect.left - brect.left,
+        top: erect.top - brect.top,
       };
 
       let dmin = 1000000;
@@ -54,13 +65,14 @@ export class JoinComponent implements OnInit {
             dmin = d;
           }
         });
-
-
-      let dl = this.fromPos.left - this.toPos.left;
-      let dt = this.fromPos.top - this.toPos.top;
-      this.scale = Math.sqrt((dl * dl) + (dt * dt)) / 100;
-      this.angle =  Math.atan2(-dt, -dl) / Math.PI * 180;
     }
+  }
+
+  updateTransform() {
+    let dl = this.fromPos.left - this.toPos.left;
+    let dt = this.fromPos.top - this.toPos.top;
+    this.scale = Math.sqrt((dl * dl) + (dt * dt)) / 100;
+    this.angle =  Math.atan2(-dt, -dl) / Math.PI * 180;
   }
 
   private D(a: Pos, b: Pos) {
@@ -72,7 +84,16 @@ export class JoinComponent implements OnInit {
   @HostListener('window:mousemove', ['$event'])
   update(event) {
     if (event.which == 1) {
-      this.updatePos();
+      this.updateFromPos();
+      this.updateToPos();
+      this.updateTransform();
+    }
+
+    if (this.join && !this.join.to) {
+      this.toPos.left = event.clientX;
+      this.toPos.top = event.clientY;
+      this.updateTransform();
+      this.scale *= 0.8;
     }
   }
 }

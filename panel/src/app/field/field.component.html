@@ -3,5 +3,5 @@
     <div>{{field.name}}</div>
     <div *ngIf="field.type" class="type">{{field.type}}</div>
   </div>
-  <div class="pin" [ngClass]="{'joined': joined}"></div>
+  <div class="pin" [ngClass]="{'joined': joined}" (click)="join.emit()" *ngIf="field.schema.type == 'ref'"></div>
 </div>

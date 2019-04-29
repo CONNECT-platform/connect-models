@@ -22,3 +22,17 @@ button {
     color: #212121;
   }
 }
+
+input {
+  background: black;
+  border: 1px solid white;
+  border-radius: 32px;
+  display: block;
+  height: 32px;
+  width: 50vw;
+  text-align: center;
+  color: white;
+  outline: none;
+  padding: 0 8px;
+  margin: 0 auto;
+}

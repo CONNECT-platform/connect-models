@@ -11,7 +11,7 @@ export interface ModelSchema {
 
 export class Field {
   public component?: any;
-  
+
   constructor(public schema: FieldSchema, public model: Model) {}
 
   public get name(): string { return this.schema.name; }
@@ -36,7 +36,6 @@ export class Model {
   }
 
   public get name(): string {
-    if (this.alias) return this.alias;
     return this.schema.name;
   }
 }
@@ -44,4 +43,5 @@ export class Model {
 export interface Join {
   from: Field;
   to: Model;
+  component?: any;
 }

@@ -1,5 +1,11 @@
 <div class="container">
-  <model *ngFor="let model of models" [model]="model"></model>
+  <model *ngFor="let model of models"
+    [model]="model"
+    [select]="model == selectModel"
+    (join)="addJoin($event)"
+    (click)="closeJoin(model)"
+    ></model>
+
   <join *ngFor="let join of joins" [join]="join"></join>
 
   <div class="buttons">
@@ -10,9 +16,17 @@
   <overlay #addOverlay>
     <p>Select a model to add to your query.</p>
     <br><br>
-    <div class="model-select">User</div>
-    <div class="model-select">Subscription</div>
-    <div class="model-select">Journal</div>
-    <div class="model-select">Article</div>
+    <div class="model-select" (click)="addModel(central.schemas.user)">User</div>
+    <div class="model-select" (click)="addModel(central.schemas.subscription)">Subscription</div>
+    <div class="model-select" (click)="addModel(central.schemas.journal)">Journal</div>
+    <div class="model-select" (click)="addModel(central.schemas.article)">Article</div>
+  </overlay>
+
+  <overlay #aliasOverlay>
+    <p>You need to specify an alias for this model since you already have one such model in your query.</p>
+    <br><br>
+    <input type="text" #aliasInput />
+    <br>
+    <button (click)="addFreeModel(aliasInput.value)">Done</button>
   </overlay>
 </div>

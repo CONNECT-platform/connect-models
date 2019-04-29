@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { Model, Field } from '../types';
 
@@ -10,7 +10,9 @@ import { Model, Field } from '../types';
 })
 export class ModelComponent implements OnInit {
   @ViewChild('box') box: ElementRef;
+  @Input() select: boolean = false;
   @Input() public model: Model;
+  @Output() public join: EventEmitter<Field> = new EventEmitter<Field>();
 
   constructor() {}
 

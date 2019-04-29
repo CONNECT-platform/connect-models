@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 
 import { Field } from '../types';
 
@@ -10,6 +10,8 @@ import { Field } from '../types';
 export class FieldComponent implements OnInit {
 
   @Input() public field: Field;
+  @Output() join: EventEmitter<void> = new EventEmitter<void>();
+
   public joined: boolean = false;
 
   constructor(private elref: ElementRef) {
